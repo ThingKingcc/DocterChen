@@ -1,0 +1,52 @@
+
+package Zuoye;
+
+ import java.util.Scanner;
+
+ public class Lianxi {
+     public static void main(String args[]) {
+         try {
+             if (args.length == 0) {
+                 throw new IllegalArgumentException("Please input 长恨歌");
+             }
+         } catch (IllegalArgumentException e) {
+             System.err.println(e.getMessage());
+         }
+         String res = args[0];
+         for(int i = 0; i < res.length(); i++){
+             char c = res.charAt(i);
+             System.out.print(c);
+             if((i + 1) % 14 == 0){
+                 System.out.println("。");
+                 continue;
+             }
+             if((i + 1) % 7 == 0)
+                 System.out.print(",");
+         }
+
+         System.out.println("请输入想要查找的字符串或者字符：");
+         Scanner scanner = new Scanner(System.in);
+         String find = scanner.nextLine();
+         countString(res, find);
+
+     }
+
+     private static void countString(String str,String s) {
+         int count = 0;
+         while(str.indexOf(s) != -1){
+
+             str = str.substring(str.indexOf(s)+1,str.length());
+             count++;
+
+         }
+         System.out.println(s+"出现的次数为"+count+"次");
+     }
+ }
+
+
+ class A{
+     public static void main(String[] args) {
+         String[] s = {"汉皇重色思倾国御宇多年求不得杨家有女初长成养在深闺人未识天生丽质难自弃一朝选在君王侧回眸一笑百媚生六宫粉黛无颜色春寒赐浴华清池温泉水滑洗凝脂侍儿扶起娇无力始是新承恩泽时云鬓花颜金步摇芙蓉帐暖度春宵春宵苦短日高起从此君王不早朝"};
+         Lianxi.main(s);
+     }
+ }
